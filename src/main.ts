@@ -13,18 +13,33 @@ let counter: number = 0;
 document.body.innerHTML = `
   <h1>CMPM 121 Project</h1>
   <p>Counter: <span id="counter">0</span></p>
-  <button id="increment">Click Me!</button>
+  <button id="increment">Multiply me!</button>
+  <button id="decrement">Divide me!</button>
 `;
 
 // Add click handler
-const button = document.getElementById("increment")!;
+const increaseButton = document.getElementById("increment")!;
 const counterElement = document.getElementById("counter")!;
+const decreaseButton = document.getElementById("decrement")!;
 
-button.addEventListener("click", () => {
+increaseButton.addEventListener("click", () => {
   if (!counter) {
     counter++;
   } else {
     counter *= 2;
+  }
+  counterElement.textContent = `${counter}`;
+  let r = Math.random() * 256;
+  let g = Math.random() * 256;
+  let b = Math.random() * 256;
+  document.body.style.backgroundColor = `rgb(${r}, ${g}, ${b})`;
+});
+
+decreaseButton.addEventListener("click", () => {
+  if (!counter) {
+    return;
+  } else {
+    counter /= 2;
   }
   counterElement.textContent = `${counter}`;
   let r = Math.random() * 256;
